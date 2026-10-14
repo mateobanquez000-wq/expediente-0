@@ -1,0 +1,80 @@
+:root{--c:#171715;--s:#252520;--o:#45473E;--or:#E94B1B;--bl:#8E2E22;--m:#D8D1C2;--g:#88877D}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--m);font:16px/1.55 'Archivo',Arial,sans-serif;background:radial-gradient(ellipse 80% 70% at 50% 35%,#4b534a 0%,#2b2f2a 50%,#111110 100%) fixed}
+.m{font-family:'IBM Plex Mono',monospace}.s,h1,h2,h3{font-family:'Playfair Display',Georgia,serif}
+a{color:var(--m);text-decoration:none}
+:focus-visible{outline:2px solid var(--or);outline-offset:3px}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:50;mix-blend-mode:overlay;opacity:.5;animation:flick 1.2s steps(2) infinite}
+@keyframes flick{50%{opacity:.42;transform:translate(-1px,1px)}}
+.top{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;align-items:center;padding:18px 5vw;position:relative;z-index:5}
+.logo{color:var(--or);font-size:13px}
+nav{display:flex;gap:22px;flex-wrap:wrap;font-size:14px}
+nav a{padding:6px 0;border-bottom:2px solid transparent}nav a.on{color:var(--or);border-color:var(--or)}
+.tools{display:flex;gap:10px;align-items:center}
+.badge{border:1px solid var(--or);padding:6px 12px;font-size:13px}
+button{font:inherit;cursor:pointer;min-height:44px;padding:0 22px;border:0;font-weight:600;background:var(--or);color:var(--c);transition:transform .15s,filter .15s}
+button:hover{filter:brightness(1.1);transform:translateY(-1px)}button:disabled{opacity:.4;cursor:not-allowed;transform:none}
+button.ghost{background:none;color:var(--m);border:1px solid var(--g)}
+button.danger{background:none;color:var(--or);border:1px solid var(--bl)}
+main{padding:0 5vw 80px;position:relative;z-index:2;max-width:1280px;margin:auto;animation:in .5s both}
+@keyframes in{from{opacity:0;transform:translateY(14px) scale(.995);filter:blur(4px)}}
+.k{border:1px solid rgba(136,135,125,.4);background:rgba(18,18,17,.62);padding:16px}
+.t{font-size:11px;letter-spacing:.14em;color:var(--g);text-transform:uppercase}
+input{width:100%;background:var(--s);border:1px solid var(--o);color:var(--m);padding:12px;min-height:44px;font:inherit}
+.cover{display:grid;grid-template-columns:1.1fr 1fr;gap:5vw;align-items:start;padding-top:2vh}
+.hero{position:relative;padding-top:20px}
+.hero h1{font-size:clamp(52px,9vw,110px);line-height:.95;margin:.2em 0}
+.hero h1 i{color:var(--or)}
+.hero h1 span{display:inline-block;opacity:0;animation:rev .9s forwards}
+@keyframes rev{from{opacity:0;transform:translateY(24px);filter:blur(8px)}to{opacity:1}}
+.eye{position:absolute;right:-6%;top:-10px;width:44%;transform:translate(var(--px,0),var(--py,0));transition:transform .2s}
+.drip{animation:drip 2.4s .6s both ease-out;transform-origin:top}
+@keyframes drip{from{transform:scaleY(0)}}
+.lv{display:flex;gap:14px;align-items:center;width:100%;text-align:left;background:rgba(18,18,17,.62);color:var(--m);border:1px solid rgba(136,135,125,.4);padding:10px 14px;margin-bottom:6px;font-weight:400}
+.lv[data-s=disponible],.lv[data-s=curso]{border-color:var(--or)}
+.lv[data-s=bloqueado]{opacity:.55}.lv .n{font:22px 'IBM Plex Mono';width:36px;color:var(--g)}
+.lv[data-s=disponible] .n,.lv[data-s=curso] .n{color:var(--or)}.lv[data-s=completado] .n{color:var(--m)}
+.lv .st{margin-left:auto;font:12px 'IBM Plex Mono';white-space:nowrap}
+.row{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}
+.msg{padding:12px;margin-top:12px;border-left:3px solid var(--or);background:rgba(18,18,17,.7)}
+.msg.ok{animation:stamp .5s}@keyframes stamp{from{transform:scale(1.08) rotate(-1deg);opacity:0}}
+.msg.err{border-color:var(--bl);animation:shake .35s}@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}.three{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.frag{font-family:'Playfair Display',serif;font-style:italic;font-size:19px}
+.bar{height:14px;background:var(--o);width:60%}
+.puz{font:clamp(18px,3vw,26px) 'IBM Plex Mono';margin:12px 0;color:var(--m);word-break:break-word}
+@media(max-width:800px){.cover,.two{grid-template-columns:1fr}.three{grid-template-columns:1fr}.eye{position:relative;width:55%;right:0;margin-left:auto;display:block}}
+@media(prefers-reduced-motion:reduce){*,.grain{animation:none!important;transition:none!important}.hero h1 span{opacity:1}}
+
+/* ===== Responsive avanzado ===== */
+html{-webkit-text-size-adjust:100%}
+body{min-height:100dvh;overflow-x:clip;touch-action:manipulation}
+.top{padding-top:calc(14px + env(safe-area-inset-top));padding-left:max(5vw,env(safe-area-inset-left));padding-right:max(5vw,env(safe-area-inset-right))}
+main{max-width:min(1600px,100%)}
+p{max-width:65ch}
+.cover{grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}
+.two{grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.three{grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr))}
+.lvl{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:20px;align-items:start}
+.lv .st{white-space:normal;text-align:right}
+dialog{width:min(96vw,900px);max-height:90dvh;background:#1b1c1a;color:var(--m);border:1px solid var(--or);padding:16px;overflow:auto}
+dialog::backdrop{background:rgba(0,0,0,.72)}
+@media(min-width:1500px){body{font-size:18px}.lv{padding:14px 18px}}
+@media(max-width:900px){.lvl{grid-template-columns:1fr}}
+@media(max-width:700px){
+ .top{justify-content:space-between}.logo{font-size:11px}
+ nav{position:fixed;left:0;right:0;bottom:0;z-index:20;justify-content:space-around;gap:0;background:rgba(17,17,16,.96);border-top:1px solid var(--o);padding-bottom:env(safe-area-inset-bottom)}
+ nav a{flex:1;text-align:center;padding:14px 2px;font-size:12px;min-height:48px;border-bottom:0;border-top:2px solid transparent}
+ nav a.on{border-top-color:var(--or)}
+ main{padding-bottom:calc(92px + env(safe-area-inset-bottom))}
+ .lv{flex-wrap:wrap}.lv .st{margin-left:50px;text-align:left}
+ .grain{animation:none;opacity:.35}.hero h1 span{animation-duration:.5s}
+}
+@media(max-height:500px) and (orientation:landscape){.top{padding-block:8px}main{padding-bottom:72px}}
+@media(hover:none),(pointer:coarse){button:hover{transform:none;filter:none}.grain{animation:none}}
+
+/* ===== App instalable ===== */
+[hidden]{display:none!important}
+.logo{display:flex;align-items:center;gap:10px}.mark{height:30px;width:auto}
+body{overscroll-behavior-y:none}
+@media(display-mode:standalone){.top{padding-top:calc(10px + env(safe-area-inset-top))}}

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ARCHIVO CERO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,500&family=Archivo:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#171715">
+<meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Archivo Cero"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" type="image/png" href="icons/favicon.png"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<svg width="0" height="0" aria-hidden="true"><defs>
+<filter id="paint"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="10"/></filter>
+<filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2"/><feColorMatrix values="0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .7 0"/></filter>
+</defs></svg>
+<div class="grain" aria-hidden="true"><svg width="100%" height="100%"><rect width="100%" height="100%" filter="url(#grain)"/></svg></div>
+<header class="top">
+  <a class="logo m" href="#/"><img class="mark" src="icons/logo.png" alt="" width="20" height="30">ARCHIVO CERO · EXP. 0000-A</a>
+  <nav aria-label="Principal">
+    <a href="#/" data-r="home">El expediente</a><a href="#/manual" data-r="manual">Manual</a>
+    <a href="#/pistas" data-r="pistas">Cámara de pistas</a><a href="#/archivo" data-r="archivo">Archivo</a>
+  </nav>
+  <div class="tools"><button id="inst" class="ghost" hidden>Instalar app</button><button id="snd" class="ghost" aria-pressed="false">Sonido: no</button><span id="pts" class="m badge" aria-live="polite"></span></div>
+</header>
+<main id="app" tabindex="-1"></main>
+<dialog id="insp" aria-label="Vista de inspección"><div class="m puz" id="ib"></div><div class="row"><button class="ghost" data-z="-1" aria-label="Reducir texto">A−</button><button class="ghost" data-z="1" aria-label="Ampliar texto">A+</button><button id="iclose">CERRAR</button></div></dialog>
+<script src="levels.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
